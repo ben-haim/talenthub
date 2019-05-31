@@ -1,0 +1,97 @@
+@import './base/colors';
+
+nav {
+  position: absolute;
+  display: flex;
+  top: 0;
+  width: 100%;
+  height: 3.75rem;
+  flex: 0 0 auto;
+  background-color: $primary-blue;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,.15);
+  z-index: 999;
+  a {
+    cursor: pointer;
+  }
+  .logo {
+    margin: auto 20px;
+    a {
+      text-decoration: none;
+      font-weight: 300;
+      font-size: 1.7rem;
+      color: $primary-white;
+    }
+  }
+  .right, .left {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    align-items: center;
+    li {
+      text-align: center;
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+  .left {
+    display: flex;
+    flex-direction: row;
+  }
+  .right {
+    margin-left: auto;
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      right: 2rem;
+      z-index: 1000;
+      float: right;
+      min-width: 160px;
+      margin: 2px 0 0;
+      font-size: 0.9375rem;
+      padding: 0.5rem;
+      font-size: 0.875rem;
+      text-align: left;
+      list-style: none;
+      background-color: $primary-white;
+      border: 1px solid transparent;
+      border-radius: 0.1875rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+    }
+    .dropdown-item {
+      display: block;
+      width: 100%;
+      padding: 5px;
+      clear: both;
+      font-weight: normal;
+      line-height: 1.5;
+      color: $primary-blue;
+      text-align: inherit;
+      white-space: nowrap;
+      border: 0;
+    }
+    .dropdown-item:hover {
+      opacity: .8;
+    }
+    .initials {
+      margin: .75rem 2rem;
+      text-transform: uppercase;
+      width: 2rem;
+      height: 2rem;
+      display: block;
+      line-height: 2rem;
+      text-align: center;
+      font-size: 1.25rem;
+      color: $primary-white;
+      overflow: hidden;
+      border-radius: 3px;
+      background: $primary-red;
+    }
+  }
+}
+
+
+@media only screen and (min-width: 320px) and (max-width: 736px) {
+  nav .left.left, .right.right {
+    display: none;
+  }
+}

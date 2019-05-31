@@ -1,0 +1,24 @@
+.alert-error {
+  margin: auto;
+  margin-top: 80px;
+  padding: 15px 10px;
+  width: 400px;
+  background-color: $primary-red;
+  color: $primary-white;
+  border-radius: 5px;
+}
+
+.talent-error {
+  margin-top: 20px;
+}
+
+.alert-info {
+  margin: auto;
+  margin-top: 80px;
+  padding: 15px 10px;
+  width: 400px;
+  background-color: $primary-green-alert;
+  color: $primary-white;
+  border-radius: 5px;
+  font-size: 0.75rem;
+}

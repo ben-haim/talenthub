@@ -1,0 +1,85 @@
+@import './base/colors';
+
+.search-box {
+  display: flex;
+  max-width: 800px;
+  width: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $primary-white;
+  border-radius: 5px;
+  box-shadow: 0 8px 10px 0 rgba(50,50,50,.35);
+  padding: 15px;
+  .jobs {
+    width: 50%;
+    border-right: 1px solid $primary-gray-tint-2;
+    padding: 0 20px 0 20px;
+  }
+  .talents {
+    width: 50%;
+    padding: 0 20px 0 20px;
+  }
+  .title {
+    font-weight: 300;
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+  }
+  .search-form {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .search-form input {
+    width: 300px;
+    height: 40px;
+    border: 1px solid $primary-gray-tint-2;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 14px;
+    background: $primary-white;
+    outline: none;
+  }
+  .info {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    h2 {
+      text-align: center;
+      font-weight: 300;
+      font-size: 20px;
+      margin: 15px 0 5px 0;
+    }
+    p {
+      margin: 15px 0 5px 0;
+    }
+  }
+}
+
+@media only screen and (min-width: 320px) and (max-width: 736px) {
+  .search-box {
+    height: 100vh;
+    top: 50px;
+    display: block;
+    .jobs {
+      width: 100%;
+      border-bottom: 1px solid $primary-gray-tint-2;
+      padding: 0 0 15px;
+    }
+    .talents {
+      width: 100%;
+      margin-top: 20px;
+      padding: 0;
+    }
+    .info {
+      h2 {
+        margin: 15px 15px 5px 15px;
+      }
+    }
+    .search-form input {
+      font-size: 16px;
+    }
+  }
+}

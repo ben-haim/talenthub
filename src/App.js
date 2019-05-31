@@ -1,25 +1,70 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {
+  faPlus,
+  faUser,
+  faBriefcase,
+  faUserFriends,
+  faChartPie,
+  faFileImage,
+  faCheck,
+  faChevronLeft,
+  faRocket,
+  faBullhorn,
+  faGraduationCap,
+  faCode,
+  faBicycle,
+  faMotorcycle,
+  faPlane,
+  faSearch,
+  faExclamation
+} from '@fortawesome/free-solid-svg-icons'
+
+import './App.scss';
+
+import Home from './pages/home';
+import PostJob from './pages/post_job';
+import Billing from './pages/billing';
+import Jobs from './pages/jobs';
+import Talents from './pages/talents';
+import AddTalent from './pages/add_talent';
+
+import Header from './components/header';
+
+library.add(
+  faPlus,
+  faUser,
+  faBriefcase,
+  faUserFriends,
+  faChartPie,
+  faFileImage,
+  faCheck,
+  faChevronLeft,
+  faRocket,
+  faBullhorn,
+  faGraduationCap,
+  faCode,
+  faBicycle,
+  faMotorcycle,
+  faPlane,
+  faSearch,
+  faExclamation
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Header />
+
+      <Route exact path="/" component={Home} />
+      <Route exact path="/post" component={PostJob} />
+      <Route exact path="/billing" component={Billing} />
+      <Route path="/jobs/:query?" component={Jobs} />
+      <Route path="/talents/:query?" component={Talents} />
+      <Route exact path="/add_talent" component={AddTalent} />
+    </Router>
   );
 }
 

@@ -1,0 +1,55 @@
+.button {
+  margin: 0 10px;
+  list-style: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: $primary-green;
+  color: $primary-white;
+  text-align: center;
+  font-size: 14px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 20px;
+  svg {
+    margin-right: 10px;
+  }  
+}
+
+.button:hover {
+  opacity: .8;
+}
+
+.button-active {
+  border-bottom: 2px solid $primary-red;
+}
+
+.nav-button {
+  margin: auto;
+  width: 85px;
+  background-color: $primary-blue;
+  color: $primary-white;
+  text-align: center;
+  font-size: 0.9375rem;
+  display: inline-block;
+  text-decoration: none;
+  padding: 20px 15px;
+  svg {
+    color: $primary-white;
+    margin-right: 10px;
+  }
+}
+
+.primary-button {
+  margin: 10px 20px;
+  width: 120px;
+  border-radius: 5px;
+  background-color: $primary-red;
+  color: $primary-white;
+  font-size: 14px;
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 10px;
+  svg {
+    margin-right: 10px;
+  }
+}

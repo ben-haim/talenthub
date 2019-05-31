@@ -1,0 +1,38 @@
+@import './colors';
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  label {
+    font-size: 12px;
+    .error {
+      color: $primary-red;
+      float: right;
+    }
+  }
+  p {
+    margin-top: 0;
+  }
+  .error.error {
+    border-color: $primary-red;
+  }
+}
+
+.logo {
+  cursor: pointer;
+  position: relative;
+  border-radius: 5px;
+  input {
+    display: none;
+  }
+  img {
+    height: 116px;
+    width: 116px;
+  }
+  svg {
+    margin-top: 2px;
+    font-size: 117px;
+    color: $primary-gray-tint-3;
+    -webkit-text-stroke: 5px $primary-gray-tint-1;
+  }
+}
