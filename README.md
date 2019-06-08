@@ -1,68 +1,37 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/9268746/59143538-6f530400-89dd-11e9-92ac-22ea34733f9c.png" height="100" /><br/>
+  <span><b>TalentHub</b>: <span>Job board and ATS</span><br/>
+</p>
 
-## Available Scripts
+<p align="center">
+  <img alt="TalentHub - Job board" src="https://user-images.githubusercontent.com/9268746/59143835-5ef05880-89e0-11e9-8edd-7e868475c112.png" />
+  <img alt="TalentHub - Job posting" src="https://user-images.githubusercontent.com/9268746/59143860-8fd08d80-89e0-11e9-8d02-d459cd0c181c.png" />
+</p>
 
-In the project directory, you can run:
+<br/>
 
-### `npm start`
+## Why
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+TalentHub is a web app to help post jobs and track applicants in hiring porcess.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Features
 
-### `npm test`
+- [x] **Jobs board**: View and search active jobs, view their locations on the map;
+- [x] **Post Job**: Add a job posting that will be displayed on the board;
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Next features:
 
-### `npm run build`
+- [ ] **Data validation on job posting**
+- [ ] **Adding applicants**
+- [ ] **Tracking applicants thoughout interview process**
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- [Create React App](https://github.com/facebook/create-react-app)
+- [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) _(Monorepo)_
+- [React](https://github.com/facebook/react)
+- [GraphQL](https://github.com/facebook/graphql)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+This project is provided as is without any warranties. Use at your own risk.<br/>
+By using TalentHub you agree with its terms of use and privacy policy.
