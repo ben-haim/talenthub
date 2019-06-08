@@ -1,13 +1,12 @@
-import React, { PureComponent } from 'react';
+import React, { PureComponent } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link, withRouter } from 'react-router-dom'
 
-import { Link } from 'react-router-dom';
-
-import '../styles/header.scss';
+import '../styles/header.scss'
 
 class Header extends PureComponent {
   render() {
-    const {name} = this.props;
+    const {name, location} = this.props
 
     return (
       <nav className="nav-bar">
@@ -31,19 +30,21 @@ class Header extends PureComponent {
               Talents
             </Link>
           </li>
-          <li>
-            <Link className={name === 'stats' ? "nav-button button-active" : "nav-button"} to='/stats'>
-              <FontAwesomeIcon icon="chart-pie"/>
-              Stats
-            </Link>
-          </li>
         </ul>
         <ul className="right">
           <li>
-            <Link className="primary-button" to='/post'>
-              <FontAwesomeIcon icon="plus"/>
-              Post Job
-            </Link>
+            { location.pathname === "/jobs" &&
+              <Link className="primary-button" to='/post_job'>
+                <FontAwesomeIcon icon="plus"/>
+                Post Job
+              </Link>
+            }
+            { location.pathname === "/talents" &&
+              <Link className="primary-button" to='/add_talent'>
+                <FontAwesomeIcon icon="plus"/>
+                Add Talent
+              </Link>
+            }
           </li>
         </ul>
       </nav>
@@ -51,4 +52,4 @@ class Header extends PureComponent {
   }
 };
 
-export default Header;
+export default withRouter(Header)

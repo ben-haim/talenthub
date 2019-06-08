@@ -1,81 +1,72 @@
-import React, { PureComponent } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Spinner from 'react-spinkit';
+import React, { PureComponent } from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { withApollo } from 'react-apollo'
 
-import Map from '../components/map';
-import JobItem from '../components/job/item';
+import Map from '../components/map'
+import JobItem from '../components/job/item'
+import { JOBS_QUERY } from '../queries'
 
-import '../styles/jobs.scss';
+import '../styles/jobs.scss'
 
 class Jobs extends PureComponent {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
     this.state = {
-      query: this.props.query,
-      company: {}
-    };
+      currentJob: null,
+      jobs: [],
+      filteredJobs: [],
+      query: props.query
+    }
   }
 
   componentDidMount() {
-    const {uid, query} = this.props;
+    this.props.client.query({
+      query: JOBS_QUERY
+    }).then(response => {
+      this.setState(
+        {
+          jobs: response.data.allJobs.data,
+          filteredJobs: response.data.allJobs.data
+        }
+      )
+    })
+  }
+
+  onOpen(job) {
+    this.setState({currentJob: job})
+  }
+
+  onChange(e) {
+    let filteredJobs = this.state.jobs
+    filteredJobs = filteredJobs.filter(job => job.title.includes(e.target.value))
+    this.setState({filteredJobs})
   }
 
   render() {
-    let jobs;
-    const {query} = this.state;
-
-    let jobList, jobMessage;
-
-    const onSubmit = e => {
-      e.preventDefault();
-      let {query} = this.state;
-    };
-
-    const onChange = e => {
-      let {value} = e.target;
-
-      this.setState({query: value});
-    };
-
-    const onOpen = job => {
-      let center = {lng: parseFloat(job.company.longitude), lat: parseFloat(job.company.latitude)}
-      this.setState({company: job.company});
-    };
-
-    if (jobs) {
-      if (jobs.length > 0) {
-        jobList = jobs.map(job => <JobItem key={job.id} {...{job, onOpen}} />);
-        jobMessage = <p>{jobs.length} results</p>
-      } else {
-        jobList = (
-          <div className="empty">
-            <FontAwesomeIcon icon="briefcase" />
-            <p>There are no jobs.</p>
-          </div>
-        );
-      }
-    } else {
-      jobList = <Spinner spinnerName="double-bounce" overrideSpinnerClassName="spinner" />;
-    }
+    const {query, filteredJobs, currentJob} = this.state
 
     return (
       <div className="jobs">
         <div className="view">
           <div className="search">
-            <form {...{onSubmit}}>
-            <input {...{type: "text", value: query, onChange, placeholder: "Search for a skill or company"}} />
-              <FontAwesomeIcon icon="search" />
-            </form>
-            {jobMessage}
+            <input
+              type="text"
+              placeholder="Search for a skill or company"
+              value={query}
+              onChange={event => this.onChange(event)}
+            />
+            <FontAwesomeIcon icon="search" />
           </div>
           <div className="list">
-            {jobList}
+            {filteredJobs.map((job, index) => (
+              <JobItem key={index} job={job} onOpen={job => this.onOpen(job)} />
+            ))}
           </div>
         </div>
-        <Map {...{...this.props.store, ...this.state}} />
+        <Map jobs={filteredJobs} currentJob={currentJob}/>
       </div>
-    );
+    )
   }
 }
 
-export default Jobs;
+export default withApollo(Jobs)

@@ -1,23 +1,17 @@
 import React, { PureComponent } from 'react';
 import moment from 'moment';
 
-import ShareLink from './share_link';
-
-class JobItem extends React.PureComponent {
+class JobItem extends PureComponent {
   constructor(props, context) {
     super(props, context);
     this.state = {
       showMode: false,
-      showShareLink: false
     };
   }
 
   render() {
     const {job} = this.props;
-    const {showMode, showShareLink} = this.state;
-    let actionContent;
-
-    const email = `${job.company.email}?Subject=[TalentHub]%20${job.title}`
+    const {showMode} = this.state;
 
     const toggleShowMode = () => {
       if (showMode) {
@@ -28,35 +22,11 @@ class JobItem extends React.PureComponent {
       this.props.onOpen(job);
     }
 
-    const toggleShareLink = () => this.setState({showShareLink: true});
-
-    if (job.applyByEmail) {
-      actionContent = (
-        <div className="action">
-          <div className="apply-by-email">
-            <p>
-              Apply by sending an email to <a href={`mailto:${email}`}>{job.company.email}</a>
-            </p>
-          </div>
-          <ShareLink {...{job, toggleShareLink, showShareLink}}/>
-        </div>
-      );
-    } else {
-      actionContent = (
-        <div className="action">
-          <a href={`${job.source}?ref=talenthub`} target="blank" className="button apply-button">
-            Apply
-          </a>
-          <ShareLink {...{job, toggleShareLink, showShareLink}}/>
-        </div>
-      );
-    }
-
     return (
       <div className={job.promoted ? "item promoted" : "item"}>
         <div onClick={toggleShowMode} className="header">
           <div className="logo">
-            {job.company.logo.includes('https') ? <img src={job.company.logo} /> : <img src={'/' + job.company.logo} />}
+            <img src={job.company.logo} alt="logo"/>
           </div>
           <div className="title">
             <h3>
@@ -68,7 +38,7 @@ class JobItem extends React.PureComponent {
           </div>
           <div className="details">
             <h3>
-              {job.company.address.split(",")[0]}
+              {job.company.address}
             </h3>
             <p>
               {moment(job.createdAt).from(moment())}
@@ -97,7 +67,11 @@ class JobItem extends React.PureComponent {
                 </div>
               }
             </div>
-            {actionContent}
+            <div className="action">
+              <a href={`${job.source}?ref=talenthub`} target="blank" className="button apply-button">
+                Apply
+              </a>
+            </div>
           </div>
         }
       </div>

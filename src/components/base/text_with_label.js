@@ -1,7 +1,7 @@
 import React from 'react';
 
 function TextWithLabel({name, valid, value, label, placeholder, onChange}) {
-  const className = !valid && 'error';
+  const className = valid ? '' : 'error';
 
   return (
     <div className="input-group">

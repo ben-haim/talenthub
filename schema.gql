@@ -1,0 +1,25 @@
+type Query {
+   allCompanies: [Company!]
+   allJobs: [Job!]
+   findJobsByTitle(title: String!): Job
+}
+
+type Company {
+   name: String!
+   description: String
+   website: String
+   address: String!
+   latitude: Float!
+   longitude: Float!
+   logo: String!
+   email: String
+   jobs: [Job] @relation
+}
+
+type Job {
+   type: String!
+   title: String!
+   requirements: [String]!
+   responsibilities: [String]!
+   company: Company
+}

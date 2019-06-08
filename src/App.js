@@ -59,9 +59,9 @@ function App() {
       <Header />
 
       <Route exact path="/" component={Home} />
-      <Route exact path="/post" component={PostJob} />
+      <Route exact path="/post_job" component={PostJob} />
       <Route exact path="/billing" component={Billing} />
-      <Route path="/jobs/:query?" component={Jobs} />
+      <Route path="/jobs/:query?" render={props => <Jobs {...props} />} />
       <Route path="/talents/:query?" component={Talents} />
       <Route exact path="/add_talent" component={AddTalent} />
     </Router>
