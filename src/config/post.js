@@ -3,13 +3,13 @@ export const OPTIONS = [
     "icon": "bullhorn",
     "id": "promoted",
     "text": "Promoted",
-    "price": "45.000"
+    "price": "Contact us"
   },
   {
     "icon": "briefcase",
     "id": "regular",
     "text": "Regular",
-    "price": "15.000"
+    "price": "Free"
   },
   {
     "icon": "graduation-cap",
