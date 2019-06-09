@@ -15,7 +15,7 @@ class Jobs extends PureComponent {
       currentJob: null,
       jobs: [],
       filteredJobs: [],
-      query: props.query
+      query: props.match.params.query || ''
     }
   }
 
@@ -23,10 +23,11 @@ class Jobs extends PureComponent {
     this.props.client.query({
       query: JOBS_QUERY
     }).then(response => {
+      const { data } = response.data.allJobs
       this.setState(
         {
-          jobs: response.data.allJobs.data,
-          filteredJobs: response.data.allJobs.data
+          jobs: data,
+          filteredJobs: data.filter(job => job.title.toLowerCase().includes(this.state.query))
         }
       )
     })
@@ -38,8 +39,8 @@ class Jobs extends PureComponent {
 
   onChange(e) {
     let filteredJobs = this.state.jobs
-    filteredJobs = filteredJobs.filter(job => job.title.includes(e.target.value))
-    this.setState({filteredJobs})
+    filteredJobs = filteredJobs.filter(job => job.title.toLowerCase().includes(e.target.value))
+    this.setState({filteredJobs, query: e.target.value})
   }
 
   render() {
