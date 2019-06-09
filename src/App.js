@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import {
@@ -22,16 +22,15 @@ import {
   faExclamation
 } from '@fortawesome/free-solid-svg-icons'
 
-import './App.scss';
+import './App.scss'
 
-import Home from './pages/home';
-import PostJob from './pages/post_job';
-import Billing from './pages/billing';
-import Jobs from './pages/jobs';
-import Talents from './pages/talents';
-import AddTalent from './pages/add_talent';
+import Home from './pages/home'
+import PostJob from './pages/post_job'
+import Jobs from './pages/jobs'
+import Talents from './pages/talents'
+import AddTalent from './pages/add_talent'
 
-import Header from './components/header';
+import Header from './components/header'
 
 library.add(
   faPlus,
@@ -51,7 +50,7 @@ library.add(
   faPlane,
   faSearch,
   faExclamation
-);
+)
 
 function App() {
   return (
@@ -60,7 +59,6 @@ function App() {
 
       <Route exact path="/" component={Home} />
       <Route exact path="/post_job" component={PostJob} />
-      <Route exact path="/billing" component={Billing} />
       <Route path="/jobs/:query?" render={props => <Jobs {...props} />} />
       <Route path="/talents/:query?" component={Talents} />
       <Route exact path="/add_talent" component={AddTalent} />
@@ -68,4 +66,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

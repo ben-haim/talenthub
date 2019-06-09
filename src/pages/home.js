@@ -1,36 +1,13 @@
-import React, { PureComponent, Fragment } from 'react';
-import gql from 'graphql-tag';
-import { withApollo } from 'react-apollo'
+import React, { PureComponent, Fragment } from 'react'
 
 import SearchBox from '../components/search_box';
 import Map from '../components/map';
 
-const COMPANIES_QUERY = gql`
-  query FindAllCompanies {
-    allCompanies {
-      data {
-        name
-        address
-        jobs {
-          data {
-            title
-          }
-        }
-      }
-    }
-  }
-`
 class Home extends PureComponent {
-  componentDidMount() {
-    this.props.client.query({
-      query: COMPANIES_QUERY
-    }).then(response => console.log(response.data))
-  }
-
   render() {
     return (
       <Fragment>
-        <SearchBox {...this.props} />
+        <SearchBox />
         <div className="main-view">
           <Map />
         </div>
@@ -39,4 +16,4 @@ class Home extends PureComponent {
   }
 }
 
-export default withApollo(Home);
+export default Home
