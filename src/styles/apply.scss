@@ -1,0 +1,43 @@
+@import './base/colors';
+
+.apply {
+  margin-top: 80px;
+  .header {
+    margin: auto;
+    padding: 10px 0;
+    width: 600px;
+    text-align: center;
+    h1 {
+      font-weight: 300;
+      font-size: 3rem;
+      color: $primary-blue;
+    }
+    img {
+      height: 120px;
+      width: 120px;
+    }
+  }
+  .profile {
+    margin: auto;
+    padding: 10px 0;
+    width: 600px;
+    text-align: left;    
+    input, textarea {
+      margin-bottom: 20px;
+      height: 40px;
+      border: 1px solid $primary-gray-tint-2;
+      border-radius: 5px;
+      padding: 0 10px;
+      font-size: 14px;
+      background: $primary-white;
+      outline: none;
+    }    
+  }
+  .action {
+    margin: auto;
+    margin-bottom: 40px;
+    padding: 10px 0;
+    width: 600px;
+    text-align: center;
+  }  
+}
