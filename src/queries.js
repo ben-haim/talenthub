@@ -4,6 +4,7 @@ export const JOBS_QUERY = gql`
   query FindAllJobs {
     allJobs {
       data {
+        _id
         title
         company {
           name
@@ -13,6 +14,17 @@ export const JOBS_QUERY = gql`
           latitude
           longitude
         }
+      }
+    }
+  }
+`
+
+export const FIND_JOB = gql`
+  query FindJobByID($id: ID!) {
+    findJobByID(id: $id) {
+      title
+      company {
+        logo
       }
     }
   }

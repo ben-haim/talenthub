@@ -27,6 +27,7 @@ import './App.scss'
 import Home from './pages/home'
 import PostJob from './pages/post_job'
 import Jobs from './pages/jobs'
+import Apply from './pages/apply'
 import Talents from './pages/talents'
 import AddTalent from './pages/add_talent'
 
@@ -60,6 +61,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/post_job" component={PostJob} />
       <Route path="/jobs/:query?" render={props => <Jobs {...props} />} />
+      <Route path="/apply/:query?" component={Apply} />
       <Route path="/talents/:query?" component={Talents} />
       <Route exact path="/add_talent" component={AddTalent} />
     </Router>

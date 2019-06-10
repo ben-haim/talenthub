@@ -1,30 +1,29 @@
-import React, { PureComponent } from 'react';
-import moment from 'moment';
+import React, { PureComponent } from 'react'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
 
 class JobItem extends PureComponent {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
     this.state = {
       showMode: false,
     };
   }
 
-  render() {
-    const {job} = this.props;
-    const {showMode} = this.state;
+  onToggle() {
+    const { job, onOpen } = this.props
 
-    const toggleShowMode = () => {
-      if (showMode) {
-        this.setState({showMode: false});
-      } else {
-        this.setState({showMode: true});
-      }
-      this.props.onOpen(job);
-    }
+    this.setState({showMode: !this.state.showMode})
+    onOpen(job)
+  }
+
+  render() {
+    const { job } = this.props
+    const { showMode } = this.state
 
     return (
       <div className={job.promoted ? "item promoted" : "item"}>
-        <div onClick={toggleShowMode} className="header">
+        <div onClick={() => this.onToggle()} className="header">
           <div className="logo">
             <img src={job.company.logo} alt="logo"/>
           </div>
@@ -68,9 +67,9 @@ class JobItem extends PureComponent {
               }
             </div>
             <div className="action">
-              <a href={`${job.source}?ref=talenthub`} target="blank" className="button apply-button">
+              <Link className="button apply-button" to={`/apply/${job._id}`} target="blank">
                 Apply
-              </a>
+              </Link>
             </div>
           </div>
         }
