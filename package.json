@@ -12,6 +12,7 @@
     "font-awesome": "^4.7.0",
     "google-map-react": "^1.1.4",
     "graphql": "^14.3.1",
+    "immutable": "^4.0.0-rc.12",
     "moment": "^2.24.0",
     "node-sass": "^4.11.0",
     "react": "^16.8.6",
@@ -24,6 +25,8 @@
     "react-scripts": "2.1.8",
     "react-spinkit": "^3.0.0",
     "react-sticky": "^6.0.3",
+    "slate": "^0.47.4",
+    "slate-react": "^0.22.4",
     "subscriptions-transport-ws": "^0.9.16"
   },
   "scripts": {

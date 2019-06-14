@@ -1,6 +1,11 @@
 import React, { PureComponent } from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
+import Html from 'slate-html-serializer'
+
+import { RULES } from '../base/text_editor_config'
+
+const HTML = new Html({ rules: RULES })
 
 class JobItem extends PureComponent {
   constructor(props, context) {
@@ -20,6 +25,9 @@ class JobItem extends PureComponent {
   render() {
     const { job } = this.props
     const { showMode } = this.state
+
+    const requirements = HTML.serialize(JSON.parse(job.requirements))
+    const responsibilities = HTML.serialize(JSON.parse(job.responsibilities))
 
     return (
       <div className={job.promoted ? "item promoted" : "item"}>
@@ -49,22 +57,10 @@ class JobItem extends PureComponent {
             <div className="description">
               <h3>About {job.company.name}</h3>
               <p>{job.company.description}</p>
-              {job.responsibilities &&
-                <div>
-                  <h3>Responsibilities</h3>
-                  <ul>
-                    {job.responsibilities.map((r, i) => <li key={i}>{r}</li>)}
-                  </ul>
-                </div>
-              }
-              {job.requirements &&
-                <div>
-                  <h3>Requirements</h3>
-                  <ul>
-                    {job.requirements.map((r, i) => <li key={i}>{r}</li>)}
-                  </ul>
-                </div>
-              }
+              <h3 className="block">Responsibilities</h3>
+              <div dangerouslySetInnerHTML={{__html: responsibilities}} />
+              <h3 className="block">Requirements</h3>
+              <div dangerouslySetInnerHTML={{__html: requirements}} />
             </div>
             <div className="action">
               <Link className="button apply-button" to={`/apply/${job._id}`} target="blank">
@@ -78,4 +74,4 @@ class JobItem extends PureComponent {
   }
 }
 
-export default JobItem;
+export default JobItem

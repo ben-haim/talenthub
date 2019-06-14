@@ -52,15 +52,15 @@ class Jobs extends PureComponent {
           <div className="search">
             <input
               type="text"
-              placeholder="Search for a skill or company"
+              placeholder="Search for a title"
               value={query}
               onChange={event => this.onChange(event)}
             />
             <FontAwesomeIcon icon="search" />
           </div>
           <div className="list">
-            {filteredJobs.map((job, index) => (
-              <JobItem key={index} job={job} onOpen={job => this.onOpen(job)} />
+            {filteredJobs.map(job => (
+              <JobItem key={job._id} job={job} onOpen={job => this.onOpen(job)} />
             ))}
           </div>
         </div>

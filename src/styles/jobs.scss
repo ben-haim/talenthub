@@ -136,6 +136,9 @@
         padding: 15px 10px;
         border-top: 1px solid $primary-gray-tint-2;
         border-bottom: 1px solid $primary-gray-tint-2;
+        .block {
+          margin-top: 15px;
+        }
         p {
           white-space: pre-line;
         }

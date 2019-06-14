@@ -13,7 +13,7 @@ type Company {
 type Job {
    type: String!
    title: String!
-   requirements: [String]!
-   responsibilities: [String]!
+   requirements: String!
+   responsibilities: String!
    company: Company
 }
