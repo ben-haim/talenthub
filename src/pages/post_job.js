@@ -7,6 +7,7 @@ import { CREATE_JOB } from '../queries'
 import Map from '../components/map'
 import InputWithLabel from '../components/base/input_with_label'
 import TextWithLabel from '../components/base/text_with_label'
+import TextEditor from '../components/base/text_editor'
 
 import { OPTIONS } from '../config/post'
 
@@ -51,8 +52,8 @@ class PostPage extends PureComponent {
           company: {
             ...prevState.company,
             address,
-            lat: latLng.lat,
-            lng: latLng.lng
+            lat: parseFloat(latLng.lat),
+            lng: parseFloat(latLng.lng)
           },
         }))
       })
@@ -67,6 +68,15 @@ class PostPage extends PureComponent {
       [context]: {
         ...prevState[context],
         [field]: value,
+      },
+    }))
+  }
+
+  onEditorChange(field, data) {
+    this.setState(prevState => ({
+      job: {
+        ...prevState.job,
+        [field]: data,
       },
     }))
   }
@@ -115,7 +125,6 @@ class PostPage extends PureComponent {
                       <FontAwesomeIcon id={option.id} icon={option.icon} />
                       <div className="name" id={option.id}>{option.text}</div>
                       <div className="price" id={option.id}>{option.price}</div>
-                      <div className="time" id={option.id}>for 30 days</div>
                     </div>
                   );
                 })
@@ -131,7 +140,7 @@ class PostPage extends PureComponent {
                 label="Company name*"
                 placeholder="Awesome Company"
                 value={company.name}
-                onChange={event => {this.onChange(event)}}
+                onChange={event => this.onChange(event)}
               />
               <div className="row">
                 <InputWithLabel
@@ -140,7 +149,7 @@ class PostPage extends PureComponent {
                   label="Company website*"
                   placeholder="https://awesome-comp.com"
                   value={company.website}
-                  onChange={event => {this.onChange(event)}}
+                  onChange={event => this.onChange(event)}
                 />
                 <InputWithLabel
                   name="company.logo"
@@ -148,7 +157,7 @@ class PostPage extends PureComponent {
                   label="Company logo url*"
                   placeholder="https://awesome-comp.com/logo.png"
                   value={company.logo}
-                  onChange={event => {this.onChange(event)}}
+                  onChange={event => this.onChange(event)}
                 />
               </div>
             </div>
@@ -158,7 +167,7 @@ class PostPage extends PureComponent {
               label="Company description"
               placeholder="We are an awesome company. Our mission is to make world a better place!"
               value={company.description}
-              onChange={event => {this.onChange(event)}}
+              onChange={event => this.onChange(event)}
             />
           </div>
           <div className="map">
@@ -213,23 +222,19 @@ class PostPage extends PureComponent {
               label="Job title*"
               placeholder="Javascript Rockstar!"
               value={job.title}
-              onChange={event => {this.onChange(event)}}
+              onChange={event => this.onChange(event)}
             />
-            <TextWithLabel 
-              name="job.requirements"
-              valid={true}
-              label="Job requirements"
-              placeholder="- 5+ years of production experience; \n- Proven experience leading a small team; \n- Excellent communication and negotiation skills; \n- Great English communication skills."
-              value={job.requirements}
-              onChange={event => {this.onChange(event)}}
+            <TextEditor
+              name="requirements"
+              label="Job requirements*"
+              placeholder="Proven experience leading a small team"
+              onChange={data => this.onEditorChange('requirements', data)}
             />
-            <TextWithLabel
-              name="job.responsibilities"
-              valid={true}
-              label="Job responsibilities"
-              placeholder="- Development of the application; \n- Team coordination; \n- Supervision of the team; \n- Code review."
-              value={job.responsibilities}
-              onChange={event => {this.onChange(event)}}
+            <TextEditor
+              name="responsibilities"
+              label="Job responsibilities*"
+              placeholder="Team coordination"
+              onChange={data => this.onEditorChange('responsibilities', data)}
             />
           </div>
           <hr />
@@ -241,7 +246,7 @@ class PostPage extends PureComponent {
               label="Company email*"
               placeholder="hiring@awesome-comp.com"
               value={company.email}
-              onChange={event => {this.onChange(event)}}
+              onChange={event => this.onChange(event)}
             />
           </div>
         </div>
@@ -258,6 +263,8 @@ class PostPage extends PureComponent {
                     title: job.title,
                     name: company.name,
                     description: company.description,
+                    requirements: job.requirements,
+                    responsibilities: job.responsibilities,
                     website: company.website,
                     logo: company.logo,
                     address: company.address,
