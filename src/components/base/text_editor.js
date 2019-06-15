@@ -34,6 +34,7 @@ class TextEditor extends React.Component {
               {this.renderMarkButton('bold', 'format_bold')}
               {this.renderMarkButton('italic', 'format_italic')}
               {this.renderMarkButton('underlined', 'format_underlined')}
+              {this.renderBlockButton('heading-one', 'looks_one')}
               {this.renderBlockButton('numbered-list', 'format_list_numbered')}
               {this.renderBlockButton('bulleted-list', 'format_list_bulleted')}
             </div>
@@ -68,11 +69,13 @@ class TextEditor extends React.Component {
   renderBlockButton = (type, icon) => {
     let isActive = this.hasBlock(type)
 
-    const { value: { document, blocks } } = this.state
+    if (['numbered-list', 'bulleted-list'].includes(type)) {
+      const { value: { document, blocks } } = this.state
 
-    if (blocks.size > 0) {
-      const parent = document.getParent(blocks.first().key)
-      isActive = this.hasBlock('list-item') && parent && parent.type === type
+      if (blocks.size > 0) {
+        const parent = document.getParent(blocks.first().key)
+        isActive = this.hasBlock('list-item') && parent && parent.type === type
+      }
     }
 
     return (
@@ -89,6 +92,8 @@ class TextEditor extends React.Component {
     const { attributes, children, node } = props
 
     switch (node.type) {
+      case 'heading-one':
+        return <h3 {...attributes}>{children}</h3>
       case 'bulleted-list':
         return <ul {...attributes}>{children}</ul>
       case 'list-item':

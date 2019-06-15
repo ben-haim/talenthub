@@ -6,8 +6,7 @@ export const JOBS_QUERY = gql`
       data {
         _id
         title
-        requirements
-        responsibilities
+        description
         company {
           name
           description
@@ -37,9 +36,8 @@ export const CREATE_JOB = gql`
       $type: String!,
       $title: String!,
       $name: String!,
-      $description: String,
-      $requirements: String!,
-      $responsibilities: String!,
+      $companyDescription: String,
+      $jobDescription: String,
       $website: String,
       $logo: String!,
       $address: String!,
@@ -50,11 +48,10 @@ export const CREATE_JOB = gql`
     createJob(data: {
       type: $type
       title: $title
-      requirements: $requirements
-      responsibilities: $responsibilities
+      description: $jobDescription
       company: { create: {
         name: $name
-        description: $description
+        description: $companyDescription
         website: $website
         logo: $logo
         address: $address
@@ -63,7 +60,7 @@ export const CREATE_JOB = gql`
         email: $email
       }}
     }) {
-      title
+      _id
     }
   }
 `

@@ -26,8 +26,7 @@ class JobItem extends PureComponent {
     const { job } = this.props
     const { showMode } = this.state
 
-    const requirements = HTML.serialize(JSON.parse(job.requirements))
-    const responsibilities = HTML.serialize(JSON.parse(job.responsibilities))
+    const description = HTML.serialize(JSON.parse(job.description))
 
     return (
       <div className={job.promoted ? "item promoted" : "item"}>
@@ -57,10 +56,8 @@ class JobItem extends PureComponent {
             <div className="description">
               <h3>About {job.company.name}</h3>
               <p>{job.company.description}</p>
-              <h3 className="block">Responsibilities</h3>
-              <div dangerouslySetInnerHTML={{__html: responsibilities}} />
-              <h3 className="block">Requirements</h3>
-              <div dangerouslySetInnerHTML={{__html: requirements}} />
+              <h3 className="block">Job Description</h3>
+              <div dangerouslySetInnerHTML={{__html: description}} />
             </div>
             <div className="action">
               <Link className="button apply-button" to={`/apply/${job._id}`} target="blank">

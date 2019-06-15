@@ -46,7 +46,9 @@ export const RULES = [
       }
       switch (obj.type) {
         case 'paragraph':
-        return <p>{children}</p>
+          return <p>{children}</p>
+        case 'heading-one':
+          return <h3>{children}</h3>
         case 'list-item':
           return <li>{children}</li>
         case 'bulleted-list':
