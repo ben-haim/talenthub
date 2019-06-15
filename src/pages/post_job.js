@@ -32,8 +32,7 @@ class PostPage extends PureComponent {
       job: {
         type: 'promoted',
         title: '',
-        requirements: '',
-        responsibilities: '',
+        description: ''
       }
     }
   }
@@ -72,11 +71,11 @@ class PostPage extends PureComponent {
     }))
   }
 
-  onEditorChange(field, data) {
+  onEditorChange(data) {
     this.setState(prevState => ({
       job: {
         ...prevState.job,
-        [field]: data,
+        description: data,
       },
     }))
   }
@@ -225,16 +224,10 @@ class PostPage extends PureComponent {
               onChange={event => this.onChange(event)}
             />
             <TextEditor
-              name="requirements"
-              label="Job requirements*"
-              placeholder="Proven experience leading a small team"
-              onChange={data => this.onEditorChange('requirements', data)}
-            />
-            <TextEditor
-              name="responsibilities"
-              label="Job responsibilities*"
-              placeholder="Team coordination"
-              onChange={data => this.onEditorChange('responsibilities', data)}
+              name="job.description"
+              label="Job description*"
+              placeholder="Job description goes here"
+              onChange={data => this.onEditorChange(data)}
             />
           </div>
           <hr />
@@ -262,9 +255,8 @@ class PostPage extends PureComponent {
                     type: job.type,
                     title: job.title,
                     name: company.name,
-                    description: company.description,
-                    requirements: job.requirements,
-                    responsibilities: job.responsibilities,
+                    companyDescription: company.description,
+                    jobDescription: job.description,
                     website: company.website,
                     logo: company.logo,
                     address: company.address,
