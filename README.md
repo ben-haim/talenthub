@@ -10,28 +10,47 @@
 
 <br/>
 
-## Why
+## What is this?
 
-TalentHub is a web app to help post jobs and track applicants in hiring porcess.
+TalentHub is an open source web app to help post jobs and track applicants in hiring porcess.
 
 ## Features
 
-- [x] **Jobs board**: View and search active jobs, view their locations on the map;
-- [x] **Post Job**: Add a job posting that will be displayed on the board;
-
-### Next features:
-
-- [ ] **Data validation on job posting**
-- [ ] **Adding applicants**
-- [ ] **Tracking applicants thoughout interview process**
+- [x] **Job board**: View and search active jobs on the map;
+- [x] **Post a Job**: Add a job posting that will be displayed on the board;
+- [x] **Apply to a Job**: Apply to a job with a Linkedin account;
+- [ ] **Talent Dashboard**: Track applicants during an interview in a simple dashboard view;
+- [ ] **Add Talents**: Add Candidates to the dashboard
 
 ## Tech Stack
 
 - [Create React App](https://github.com/facebook/create-react-app)
-- [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) _(Monorepo)_
 - [React](https://github.com/facebook/react)
 - [GraphQL](https://github.com/facebook/graphql)
+- [Apollo Client](https://www.apollographql.com/docs/react/api/apollo-client/)
 
+The client is build to be server agnostic, it is designed to work with any back-end with GraphQL interface. Current implementation uses the interface provided by [FaunaDB Cloud](https://fauna.com/serverless-cloud).
 
-This project is provided as is without any warranties. Use at your own risk.<br/>
-By using TalentHub you agree with its terms of use and privacy policy.
+## Cool things
+
+I've used Google Maps with Snazzy Maps styling. Also [Slate](https://github.com/ianstormtaylor/slate) for rich text editing in job posting page.
+
+## Usage
+
+Firstly, create a `.env` in the root directory with following content
+```
+REACT_APP_GRAPHQL_API=<HOST URL FOR YOUR GRAPHQL API, FOR EXAMPLE: https://graphql.fauna.com/graphql>
+REACT_APP_GRAPHQL_AUTH_TOKEN=<API AUTH KEY>
+REACT_APP_GMAPS_TOKEN=<GMAPS TOKEN WITH PLACES MODULE ENABLED>
+```
+
+Then just do
+
+```
+yarn install
+yarn start
+```
+
+## License
+
+[MIT](LICENSE)
