@@ -4,6 +4,10 @@
 </p>
 
 <p align="center">
+  <a href="https://app.netlify.com/sites/talenthub-beta/deploys"><img src="https://api.netlify.com/api/v1/badges/6a911a11-1a42-4fa5-8c68-617943dde091/deploy-status"></a>
+</p>
+
+<p align="center">
   <img alt="TalentHub - Job board" src="https://user-images.githubusercontent.com/9268746/59143835-5ef05880-89e0-11e9-8edd-7e868475c112.png" />
   <img alt="TalentHub - Job posting" src="https://user-images.githubusercontent.com/9268746/59143860-8fd08d80-89e0-11e9-8d02-d459cd0c181c.png" />
 </p>
